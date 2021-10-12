@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,8 +18,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-
-import java.util.Locale;
 
 public class Register extends AppCompatActivity {
  EditText mName,mEmail,mPassword,mPhone;
@@ -33,8 +32,8 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         mName = findViewById(R.id.Name);
-        mEmail=findViewById(R.id.Email);
-        mPassword=findViewById(R.id.Password);
+        mEmail=findViewById(R.id.email);
+        mPassword=findViewById(R.id.password);
         mPhone=findViewById(R.id.Phone);
         mRegister=findViewById(R.id.Register);
         mLogin1=findViewById(R.id.Login1);
@@ -50,8 +49,8 @@ public class Register extends AppCompatActivity {
         mRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email=mEmail.getText().toString().trim();
-                String password=mPassword.toString().trim();
+                String email = mEmail.getText().toString().trim();
+                String password = mPassword.toString().trim();
 
                 if(TextUtils.isEmpty(email))
                 {
@@ -62,25 +61,20 @@ public class Register extends AppCompatActivity {
                     mPassword.setError("password is req");
                     return;
                 }
-                if(password.length()<6){
-                    mPassword.setError("must be long then 6 letter");
+                if(password.length()<8){
+                    mPassword.setError("must be long then 8 letter");
                     return;
                 }
                 progressBar.setVisibility(View.VISIBLE);
 
-                fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful())
-                        {
-                            Toast.makeText(Register.this,"user created",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        }
-                        else
-                        {
-                            Toast.makeText(Register.this,"error"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-                        }
+                fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(task -> {
+                    if(task.isSuccessful())
+                    {
+                        Toast.makeText(Register.this,"Successfully Registered",Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
                     }
+                    else
+                        Toast.makeText(Register.this,"error"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                 });
             }
         });

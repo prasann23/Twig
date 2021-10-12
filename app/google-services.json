@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "954735262184",
-    "project_id": "twig-535d3",
-    "storage_bucket": "twig-535d3.appspot.com"
+    "project_number": "154920845146",
+    "project_id": "twig-e1df0",
+    "storage_bucket": "twig-e1df0.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:954735262184:android:422a77545329d184410c5d",
+        "mobilesdk_app_id": "1:154920845146:android:855064eb915482c01c7d63",
         "android_client_info": {
           "package_name": "com.example.twig"
         }
       },
       "oauth_client": [
         {
-          "client_id": "954735262184-913j8jk4sr799s1mpj0oi2tb271nuusq.apps.googleusercontent.com",
+          "client_id": "154920845146-ufb0qgcdonrpuc2bnf9cjupi7976b949.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBmgMscpb8BO_690BzhmhK1D55NtebkUHM"
+          "current_key": "AIzaSyCiihTbO_4yGnX5bJf02ZnNAU49jjOda6k"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "954735262184-913j8jk4sr799s1mpj0oi2tb271nuusq.apps.googleusercontent.com",
+              "client_id": "154920845146-ufb0qgcdonrpuc2bnf9cjupi7976b949.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
