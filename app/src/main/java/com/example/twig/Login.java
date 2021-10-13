@@ -49,11 +49,11 @@ public class Login extends AppCompatActivity {
 
                 if(TextUtils.isEmpty(email))
                 {
-                    mEmail.setError("email is req");
+                    mEmail.setError("email is required");
                     return;
                 }
                 if(TextUtils.isEmpty(password)){
-                    mPassword.setError("password is req");
+                    mPassword.setError("password is required");
                     return;
                 }
                 if(password.length()<8){
@@ -72,7 +72,7 @@ public class Login extends AppCompatActivity {
                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         }
                         else{
-                            Toast.makeText(Login.this,"error"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                           Toast.makeText(Login.this,"error"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
