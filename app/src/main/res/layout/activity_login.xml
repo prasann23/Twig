@@ -9,6 +9,7 @@
     android:layout_gravity="center"
     android:gravity="center_horizontal"
     android:background="@drawable/bg"
+    android:backgroundTint="@color/black"
     tools:context=".Login">
 
     <ImageView
