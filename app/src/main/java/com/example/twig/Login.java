@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.neatroots.samplesocial.MainActivity;
 
 public class Login extends AppCompatActivity {
 
@@ -69,7 +70,7 @@ public class Login extends AppCompatActivity {
                         if(task.isSuccessful () ){
                             Toast.makeText(Login.this,"Logged in",Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         }
                         else{
                            Toast.makeText(Login.this,"error"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();

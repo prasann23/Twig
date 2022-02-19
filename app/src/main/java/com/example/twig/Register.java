@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.neatroots.samplesocial.MainActivity;
 
 public class Register extends AppCompatActivity {
  EditText mName,mEmail,mPassword,mPhone;
@@ -37,12 +38,12 @@ public class Register extends AppCompatActivity {
         mPhone=findViewById(R.id.Phone);
         mRegister=findViewById(R.id.Register);
         mLogin1=findViewById(R.id.Login1);
-                fAuth = FirebaseAuth.getInstance();
+        fAuth = FirebaseAuth.getInstance();
         progressBar =findViewById(R.id.progressBar);
 
         if(fAuth.getCurrentUser() !=null)
         {
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
             finish();
         }
 
@@ -50,15 +51,15 @@ public class Register extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String email = mEmail.getText().toString().trim();
-                String password = mPassword.toString().trim();
+                String password = mPassword.getText().toString().trim();
 
                 if(TextUtils.isEmpty(email))
                 {
-                    mEmail.setError("email is req");
+                    mEmail.setError("email is required");
                     return;
                 }
                 if(TextUtils.isEmpty(password)){
-                    mPassword.setError("password is req");
+                    mPassword.setError("password is required");
                     return;
                 }
                 if(password.length()<8){
