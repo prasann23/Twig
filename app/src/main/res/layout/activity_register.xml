@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:background="@drawable/bg"
-    tools:context=".Register">
+    tools:context=".RegisterActivity">
 
     <TextView
         android:id="@+id/textView"

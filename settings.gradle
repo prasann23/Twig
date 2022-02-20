@@ -9,4 +9,3 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Twig"
 include ':app'
-include ':twig'

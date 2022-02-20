@@ -10,7 +10,7 @@
     android:gravity="center_horizontal"
     android:background="@drawable/bg"
     android:backgroundTint="@color/black"
-    tools:context=".Login">
+    tools:context=".LoginActivity">
 
     <ImageView
         android:id="@+id/imageView2"
