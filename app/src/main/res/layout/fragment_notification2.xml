@@ -17,7 +17,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tabLayout"
         tools:listitem="@layout/notification_rv_design" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

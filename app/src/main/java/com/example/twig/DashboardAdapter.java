@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.viewHolder> {
@@ -34,13 +36,14 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.view
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
         DashboardModel model = list.get(position);
-        holder.profile.setImageResource(model.getPrfile());
-        holder.dashImg.setImageResource(model.getDashboardImg());
+//        holder.profile.setImageResource(model.getPrfile());
+        Glide.with(context).load(model.imageUrl).into(holder.dashImg);
+//        holder.dashImg.setImageResource(model.getDashboardImg());
         holder.name.setText(model.getUser_name());
-        holder.bio.setText(model.getBio());
+//        holder.bio.setText(model.getBio());
         holder.like.setText(model.getLike());
-        holder.comment.setText(model.getComment());
-        holder.share.setText(model.getShare());
+//        holder.comment.setText(model.getComment());
+//        holder.share.setText(model.getShare());
 
         holder.dashImg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,25 +62,6 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.view
                 }
             }
         });
-
-        holder.saveImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (!clicked){
-                    holder.saveImg.setImageResource(R.drawable.saved);
-                    clicked = true;
-                }
-                else {
-                    holder.saveImg.setImageResource(R.drawable.ic_bookmark);
-                    clicked = false;
-                }
-
-            }
-
-
-
-        });
     }
 
     @Override
@@ -92,14 +76,14 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.view
         public viewHolder(@NonNull View itemView) {
             super(itemView);
 
-            profile = itemView.findViewById(R.id.profile_image);
+//            profile = itemView.findViewById(R.id.profile_image);
             dashImg = itemView.findViewById(R.id.addStoryImg);
-            saveImg = itemView.findViewById(R.id.saveImg);
+//            saveImg = itemView.findViewById(R.id.saveImg);
             name = itemView.findViewById(R.id.userName);
-            bio = itemView.findViewById(R.id.bio);
+//            bio = itemView.findViewById(R.id.bio);
             like = itemView.findViewById(R.id.like);
-            comment = itemView.findViewById(R.id.comment);
-            share = itemView.findViewById(R.id.share);
+//            comment = itemView.findViewById(R.id.comment);
+//            share = itemView.findViewById(R.id.share);
         }
     }
 }

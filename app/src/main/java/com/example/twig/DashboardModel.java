@@ -2,16 +2,13 @@ package com.example.twig;
 
 public class DashboardModel {
     int profile, dashboardImg;
+    String imageUrl;
     String user_name, bio, like, comment, share;
 
-    public DashboardModel(int prfile, int dashboardImg, String user_name, String bio, String like, String comment, String share) {
-        this.profile = prfile;
-        this.dashboardImg = dashboardImg;
+    public DashboardModel(String imageUrl, String user_name, String like) {
+        this.imageUrl = imageUrl;
         this.user_name = user_name;
-        this.bio = bio;
         this.like = like;
-        this.comment = comment;
-        this.share = share;
     }
 
     public int getPrfile() {

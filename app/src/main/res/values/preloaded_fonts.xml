@@ -2,9 +2,13 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/acme</item>
+        <item>@font/almendra_display</item>
         <item>@font/amaranth_bold</item>
         <item>@font/arbutus</item>
+        <item>@font/bad_script</item>
         <item>@font/baloo</item>
+        <item>@font/gorditas</item>
+        <item>@font/hachi_maru_pop</item>
         <item>@font/roboto_black</item>
         <item>@font/roboto_thin</item>
     </array>

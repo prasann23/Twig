@@ -8,8 +8,7 @@
     android:orientation="vertical"
     android:layout_gravity="center"
     android:gravity="center_horizontal"
-    android:background="@drawable/bg"
-    android:backgroundTint="@color/black"
+    android:background="@drawable/bgl"
     tools:context=".LoginActivity">
 
     <ImageView
@@ -28,9 +27,10 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/tf"
         android:ems="10"
+        android:fontFamily="@font/roboto_thin"
         android:hint="@string/email"
         android:padding="@dimen/pd"
-        android:textColorHint="@color/dark"/>
+        android:textColorHint="@color/dark" />
 
     <EditText
         android:id="@+id/password"
@@ -38,11 +38,11 @@
         android:layout_height="@dimen/tv_height"
         android:layout_marginBottom="20dp"
         android:background="@drawable/tf"
-        android:ems="10"
+        android:fontFamily="@font/roboto_thin"
         android:hint="@string/password"
+        android:inputType="textPassword"
         android:padding="@dimen/pd"
-        android:textColorHint="@color/dark"
-        android:inputType="textPassword" />
+        android:textColorHint="@color/dark" />
 
     <Button
         android:id="@+id/login2"
@@ -50,14 +50,18 @@
         android:layout_height="@dimen/bt_height"
         android:layout_marginBottom="20dp"
         android:background="@drawable/bt"
-        android:textColor="@color/dark"
-        android:text="Login" />
+        android:fontFamily="@font/almendra_display"
+        android:text="Login"
+        android:textStyle="bold"
+        android:textColor="@color/dark" />
 
     <TextView
         android:id="@+id/create"
         android:layout_width="wrap_content"
         android:layout_height="42dp"
         android:layout_marginBottom="20dp"
+        android:fontFamily="@font/roboto_thin"
+        android:textStyle="italic"
         android:text="Create Account"
         android:textColor="@color/rex"
         android:textSize="24sp" />
@@ -67,6 +71,7 @@
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:outlineAmbientShadowColor="@color/light"
         android:visibility="invisible" />
 
 </LinearLayout>

@@ -27,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
         rootView = getLayoutInflater().inflate(R.layout.activity_main, null);
         setContentView(rootView);
 
+        DatabaseUtil.init();
+        StorageUtil.init();
+
         //Hide Toolbar manually
         //getSupportActionBar().hide();
         toolbar = rootView.findViewById(R.id.toolbar);
@@ -62,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 2:
                         toolbar.setVisibility(View.GONE);
+                        transaction.replace(R.id.content, new PostFragment());
                         break;
                     case 3:
                         transaction.replace(R.id.content, new SearchFragment());

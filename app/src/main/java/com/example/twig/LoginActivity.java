@@ -1,9 +1,9 @@
 package com.example.twig;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -13,10 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -24,7 +21,22 @@ public class LoginActivity extends AppCompatActivity {
     Button mLogin2;
     TextView mCreate;
     ProgressBar progressBar;
-    FirebaseAuth fAuth;
+
+    private final BroadcastReceiver onLoginReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            boolean success = intent.getBooleanExtra("success", false);
+            progressBar.setVisibility(View.GONE);
+
+            if(success){
+                Toast.makeText(context,"Logged in",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                finish();
+            }
+            else
+                Toast.makeText(context, "Error: " + intent.getStringExtra("error"), Toast.LENGTH_SHORT).show();
+        }
+    };
 
 
     @Override
@@ -32,10 +44,18 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        if(User.isUserLoggedIn()) {
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            finish();
+        }
+
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(TwigConstants.LOGIN_RECEIVER);
+        registerReceiver(onLoginReceiver, filter);
+
         mEmail=findViewById(R.id.email);
         mPassword=findViewById(R.id.password);
         progressBar=findViewById(R.id.progressBar2);
-        fAuth=FirebaseAuth.getInstance();
         mLogin2=findViewById(R.id.login2);
         mCreate=findViewById(R.id.create);
 
@@ -61,22 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 progressBar.setVisibility(View.VISIBLE);
 
-
-                fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful () ){
-                            Toast.makeText(LoginActivity.this,"Logged in",Toast.LENGTH_SHORT).show();
-                            progressBar.setVisibility(View.GONE);
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                        }
-                        else{
-                           Toast.makeText(LoginActivity.this,"error"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-
-
+                User.loginUser(email, password, getApplicationContext());
             }
         });
         mCreate.setOnClickListener(new TextView.OnClickListener() {
@@ -85,5 +90,11 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(onLoginReceiver);
     }
 }

@@ -7,21 +7,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:background="@drawable/bg"
+    android:background="@drawable/bgr"
     tools:context=".RegisterActivity">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="100dp"
         android:layout_marginBottom="50dp"
-        android:fontFamily="monospace"
-        android:layout_gravity="left"
-        android:text="Register"
+        android:fontFamily="@font/hachi_maru_pop"
         android:padding="10dp"
+        android:text="RegisteR"
         android:textColor="@color/reg"
-        android:textSize="50dp" />
+        android:textSize="60dp" />
 
     <EditText
         android:id="@+id/Name"
@@ -30,55 +30,60 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/tf"
         android:ems="10"
+        android:fontFamily="@font/roboto_thin"
         android:hint="Name"
-        android:textColorHint="@color/dark"
+        android:inputType="textPersonName"
         android:padding="@dimen/pd"
-        android:inputType="textPersonName" />
+        android:textColorHint="@color/dark" />
 
     <EditText
         android:id="@+id/email"
         android:layout_width="@dimen/tv_width"
         android:layout_height="@dimen/tv_height"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/tf"
         android:ems="10"
+        android:fontFamily="@font/roboto_thin"
         android:hint="@string/email"
-        android:textColorHint="@color/dark"
         android:inputType="textEmailAddress"
         android:padding="@dimen/pd"
-        android:layout_marginBottom="20dp"  />
+        android:textColorHint="@color/dark" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="@dimen/tv_width"
         android:layout_height="@dimen/tv_height"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/tf"
         android:ems="10"
+        android:fontFamily="@font/roboto_thin"
         android:hint="@string/password"
-        android:textColorHint="@color/dark"
-        android:layout_marginBottom="20dp"
+        android:inputType="textPassword"
         android:padding="@dimen/pd"
-        android:inputType="textPassword" />
+        android:textColorHint="@color/dark" />
 
     <EditText
         android:id="@+id/Phone"
         android:layout_width="@dimen/tv_width"
         android:layout_height="@dimen/tv_height"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/tf"
         android:ems="10"
+        android:fontFamily="@font/roboto_thin"
         android:hint="@string/phone"
-        android:textColorHint="@color/dark"
         android:inputType="phone"
         android:padding="@dimen/pd"
-        android:layout_marginBottom="20dp"/>
+        android:textColorHint="@color/dark" />
 
     <Button
         android:id="@+id/Register"
         android:layout_width="@dimen/bt_width"
         android:layout_height="@dimen/bt_height"
-        android:background="@drawable/bt"
-        android:text="Register"
         android:layout_marginBottom="10dp"
-        android:textColor="@color/dark"/>
+        android:background="@drawable/bt"
+        android:fontFamily="@font/acme"
+        android:text="Register"
+        android:textColor="@color/light" />
 
     <ProgressBar
         android:id="@+id/progressBar"

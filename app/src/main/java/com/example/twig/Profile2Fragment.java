@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,8 +13,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -42,6 +41,8 @@ public class Profile2Fragment extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile2, container, false);
+
+        ((TextView) view.findViewById(R.id.textView2)).setText((User.getDisplayName() + " __ " + User.getCurrentUser().getEmail()));
         recyclerView = view.findViewById(R.id.friendsRV);
         list = new ArrayList<>();
         list.add(new FriendsModel(R.drawable.profile));
@@ -60,7 +61,7 @@ public class Profile2Fragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         view.findViewById(R.id.logout).setOnClickListener(v -> {
-            FirebaseAuth.getInstance().signOut();
+            User.logout();
             Intent intent = new Intent(getActivity(), LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
